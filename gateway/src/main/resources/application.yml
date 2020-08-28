@@ -1,0 +1,41 @@
+server:
+  port: 8889
+
+spring:
+  application:
+    name: kingstar-gateway
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      discovery:
+        health-check-timeout: 10s
+        health-check-interval: 10s
+        prefer-ip-address: true
+        instance-id: ${spring.application.name}
+    gateway:
+      routes:
+        - id: kingstar-kafka
+          uri: lb://kingstar-kafka
+          predicates:
+            - Path=/kakfa/**
+          filters:
+            - StripPrefix=1
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedMethods:
+              - GET
+              - POST
+              - DELETE
+              - PUT
+              - BATCH
+            allowHeaders: "*"
+
+
+logging:
+  level:
+    root: INFO
+
+
