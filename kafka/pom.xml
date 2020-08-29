@@ -91,6 +91,35 @@
                     </execution>
                 </executions>
             </plugin>
+
+            <!--使用 maven 插件和 Dockefile 命令梅建镜像-->
+            <plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+                <version>1.2.1</version>
+                <configuration>
+                    <imageName>${project.artifactId}:${project.version}</imageName>
+                    <baseImage>openjdk:8</baseImage>
+                    <!--
+                   <imageTags>
+                       <imageTag>latest</imageTag>
+                   </imageTags>
+                   -->
+                    <entryPoint>["java", "-jar","-Duser.timezone=GMT+8", "/${project.build.finalName}.jar"]</entryPoint>
+                    <!--<dockerDirectory>${project.basedir}</dockerDirectory>-->
+                    <maintainer>13804374078@163.com</maintainer>
+                    <skipDockerBuild>false</skipDockerBuild>
+                    <forceTags>true</forceTags>
+                    <resources>
+                        <resource>
+                            <targetPath>/</targetPath>
+                            <directory>${project.build.directory}</directory>
+                            <include>${project.build.finalName}.jar</include>
+                        </resource>
+                    </resources>
+                    <serverId>docker-url</serverId>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 

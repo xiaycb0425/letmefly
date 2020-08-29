@@ -1,0 +1,43 @@
+version: "3.7"
+services:
+  gateway:
+    image: gateway:2.5.0
+    hostname: gateway
+    restart: always
+    networks:
+      app:
+        ipv4_address: 172.16.1.12
+    container_name: gateway
+    depends_on:
+      - consul1
+    links:
+      - consul1
+    environment:
+      - SPRING_PROFILES_ACTIVE=test
+    ports:
+      - "8889:8889"
+    volumes:
+      - /data/banana/gateway:/data/banana/gateway
+  kakfa:
+    image: kafka:2.5.0
+    hostname: kafka
+    restart: always
+    networks:
+      app:
+        ipv4_address: 172.16.1.23
+    container_name: kafka
+    extra_hosts:
+    depends_on:
+      - consul1
+    links:
+      - consul1
+    environment:
+      - SPRING_PROFILES_ACTIVE=test
+    ports:
+      - "9999:9999"
+    volumes:
+      - /data/banana/kakfa:/data/banana/kakfa
+networks:
+  app:
+    external:
+      name: app

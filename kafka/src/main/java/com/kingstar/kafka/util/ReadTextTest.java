@@ -3,6 +3,7 @@ package com.kingstar.kafka.util;
 import org.junit.Test;
 
 import java.io.*;
+import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
 
@@ -17,7 +18,9 @@ public class ReadTextTest {
         BufferedReader br = null;
         try {
             String line = "";
-            String path = Objects.requireNonNull(this.getClass().getClassLoader().getResource("DrtpDefConfig.txt")).getPath();
+            String path = Objects.requireNonNull(this.getClass().getClassLoader().getResource("DrtpDefConfig中文.txt")).getPath();
+            // 路径url编码
+            path = URLDecoder.decode(path, "utf-8");
             File file = new File(path);
             br = new BufferedReader(new InputStreamReader(new FileInputStream(file), StandardCharsets.UTF_8));
 
