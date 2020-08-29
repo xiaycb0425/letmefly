@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/kafka/log")
 @Slf4j
 public class LogController {
+
     @GetMapping("query")
     @ApiOperation("测试列表")
     public String query() {
