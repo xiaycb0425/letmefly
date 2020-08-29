@@ -19,6 +19,8 @@
     <modules>
         <module>pojo</module>
         <module>kafka</module>
+        <module>common</module>
+        <module>websocket</module>
     </modules>
 
     <properties>
