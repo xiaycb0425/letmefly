@@ -21,6 +21,7 @@
         <module>kafka</module>
         <module>common</module>
         <module>websocket</module>
+        <module>webmagic</module>
     </modules>
 
     <properties>
