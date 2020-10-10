@@ -15,14 +15,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 
-/**
- * @author : ldl
- * @version : 1.0
- * @project_name : kingstar-pmts
- * @title : GlobalExceptionHandler
- * @description : 全局异常处理函数
- * @data : 2019/12/5
- */
+
 @RestControllerAdvice
 @Slf4j
 public class GlobalExceptionHandler {

@@ -20,7 +20,11 @@ public class LogController {
     @GetMapping("query")
     @ApiOperation("测试列表")
     public String query() {
-        String s = "小马哥";
+        try {
+            Thread.sleep(1000 * 5);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         throw new MyException("导入异常");
     }
 
