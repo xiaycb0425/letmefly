@@ -47,7 +47,7 @@ public class SelectSort implements IArraySort {
         return newArray;
     }
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args){
         SelectSort selectSort = new SelectSort();
         int[] sourceArray = {6, 4, 7, 3, 8, 14, 67, 26, 54};
         // int[] sourceArray = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};

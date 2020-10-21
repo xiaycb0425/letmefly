@@ -2,8 +2,6 @@ package com.kingstar.algorithm.sort.impl;
 
 import com.kingstar.algorithm.sort.IArraySort;
 
-import java.util.Arrays;
-
 /**
  * @author xiayc
  * @date 2020/10/13 15:41
@@ -24,28 +22,30 @@ public class QuickSort implements IArraySort {
      */
     @Override
     public int[] sort(int[] sourceArray) {
-        int[] newArr = Arrays.copyOf(sourceArray, sourceArray.length);
+       // int[] newArr = Arrays.copyOf(sourceArray, sourceArray.length);
         // 挑出基准元素
-        int pivot = newArr[0];
+        int pivot = sourceArray[0];
         int m = 0;
         int k = 0;
-        for (int i = 1; i < newArr.length; i++) {
-            if (newArr[i] < pivot) {
+        for (int i = 1; i < sourceArray.length; i++) {
+            if (sourceArray[i] < pivot) {
                 m++;
-            } else if (newArr[i] > pivot) {
+            } else if (sourceArray[i] > pivot) {
                 k++;
             }
         }
+
         int[] arr1 = new int[m];
         int[] arr2 = new int[k];
 
         int a = 0;
         int b = 0;
-        for (int i = 1; i < newArr.length; i++) {
-            if (newArr[i] < pivot) {
-                arr1[a++] = newArr[i];
-            } else if (newArr[i] > pivot) {
-                arr2[b++] = newArr[i];
+        for (int i = 1; i < sourceArray.length; i++) {
+            if (sourceArray[i] < pivot) {
+                arr1[a++] = sourceArray[i];
+
+            } else if (sourceArray[i] > pivot) {
+                arr2[b++] = sourceArray[i];
             }
         }
 
@@ -57,22 +57,22 @@ public class QuickSort implements IArraySort {
         }
 
         // 将arr1 arr2组合
-        int[] newArr1 = Arrays.copyOf(sourceArray, sourceArray.length);
+        // int[] newArr1 = Arrays.copyOf(sourceArray, sourceArray.length);
         int w = 0;
         for (int i : arr1) {
-            newArr1[w++] = i;
+            sourceArray[w++] = i;
         }
 
-        int count = newArr.length - arr1.length - arr2.length;
+        int count = sourceArray.length - arr1.length - arr2.length;
         for (int i = 0; i < count; i++) {
-            newArr1[w++] = pivot;
+            sourceArray[w++] = pivot;
         }
 
         for (int i : arr2) {
-            newArr1[w++] = i;
+            sourceArray[w++] = i;
         }
 
-        return newArr1;
+        return sourceArray;
     }
 
     public static void main(String[] args) throws Exception {

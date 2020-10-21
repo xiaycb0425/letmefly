@@ -116,7 +116,13 @@
                     </execution>
                 </executions>
             </plugin>
-
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <skipTests>true</skipTests>
+                </configuration>
+            </plugin>
             <!--使用 maven 插件和 Dockefile 命令梅建镜像-->
             <plugin>
                 <groupId>com.spotify</groupId>
